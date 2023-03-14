@@ -1,7 +1,19 @@
 ---
-import Master from "../layouts/Master.astro";
+import MasterLayout from "@/layouts/Master.astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+
+const blogPosts = await getCollection("blog");
 ---
 
-<Master>
-   <h1>Astro</h1>
-</Master>
+<MasterLayout title="">
+   <h1>Blog Posts</h1>
+   <ul>
+      {
+         blogPosts.map((blogPost) => (
+            <li>
+               <a href={`/blog/${blogPost.slug}`}>{blogPost.data.title}</a>
+            </li>
+         ))
+      }
+   </ul>
+</MasterLayout>
