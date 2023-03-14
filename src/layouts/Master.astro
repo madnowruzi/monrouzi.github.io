@@ -16,8 +16,14 @@ function makeTitle() {
       <meta name="generator" content={Astro.generator} />
       <title>{makeTitle()}</title>
    </head>
-   <body>
+   <body class="min-h-screen antialiased">
       <TopNav />
       <slot />
    </body>
 </html>
+
+<style>
+   body {
+      background-color: #309ac1;
+   }
+</style>
